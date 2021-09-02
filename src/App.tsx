@@ -7,7 +7,6 @@ import { fetchRepositories } from "./services/fetch-repositories";
 import CardRepo from "./components/card-repository";
 import Loader from "./components/leader";
 import MapRepos from "./components/map-repos";
-// import { AutoSizer, InfiniteLoader, List, WindowScroller } from "react-virtualized"
 
 interface Props {
     request: typeof Actions.request;
