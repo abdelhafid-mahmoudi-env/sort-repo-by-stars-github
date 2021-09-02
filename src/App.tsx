@@ -43,7 +43,7 @@ const App: React.FC<Props> = (props) => {
     // initial the repositories on the loading ...
     React.useEffect(() => {
         props.request();
-        const unsubscribe = fetchRepositories(1).then(response).catch(error);
+        const unsubscribe = fetchRepositories(1, props.repo.last30Day).then(response).catch(error);
     }, []);
 
     React.useEffect(() => {
@@ -59,7 +59,7 @@ const App: React.FC<Props> = (props) => {
         props.request();
         setTimeout(() => {
             let next_page = props.repo.page;
-            fetchRepositories(next_page).then(response).catch(error);
+            fetchRepositories(next_page, props.repo.last30Day).then(response).catch(error);
         }, 4000);
         return;
     };
@@ -85,7 +85,7 @@ const App: React.FC<Props> = (props) => {
 
     return (
         <div className="ui container" style={{ marginTop: 50 }}>
-            <h1>React Infinite Scroll Demo</h1>
+            <h1>Trending repositories during last 30 days {props.repo.last30Day}</h1>
             <p> This is a simple showcase as the user scrolls, we fetch data about trending repositories from the GitHub API. </p>
             <MapRepos repositories={props.repo.repositories} />
             <Loader isLoading={props.repo.isFetching} />

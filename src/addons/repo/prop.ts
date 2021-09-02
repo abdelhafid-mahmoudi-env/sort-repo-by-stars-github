@@ -10,6 +10,7 @@ export type Repository = {
 }
 
 export type IGitState = {
+    last30Day: string;
     page: number;
     isFetching: boolean;
     repositories: Repository[];
